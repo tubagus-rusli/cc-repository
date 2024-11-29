@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes'); //login & register
+const saldoRoutes = require('./routes/saldoRoutes'); //saldo
+const targetRoutes = require('./routes/targetRoutes'); //Target
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -14,7 +16,9 @@ admin.initializeApp({
 
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes); //login & register
+app.use('/api/saldo', saldoRoutes); //saldo
+app.use('/api/target', targetRoutes); //saldo
 
 //middleware (route tidak ditemukan & menangani error)
 app.use((err, res, next) => {
