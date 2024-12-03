@@ -3,6 +3,9 @@ const express = require('express');
 const authRoutes = require('./routes/authRoutes'); //login & register
 const saldoRoutes = require('./routes/saldoRoutes'); //saldo
 const targetRoutes = require('./routes/targetRoutes'); //Target
+const pendapatanRoutes = require('./routes/pendapatanRoutes'); //Pengeluaran
+const pengeluaranRoutes = require('./routes/pengeluaranRoutes'); //Pendapatan
+const kategoriRoutes = require('./routes/kategoriRoutes'); //kategori
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -19,6 +22,9 @@ app.use(express.json());
 app.use('/api/auth', authRoutes); //login & register
 app.use('/api/saldo', saldoRoutes); //saldo
 app.use('/api/target', targetRoutes); //saldo
+app.use('/api/pendapatan', pendapatanRoutes); //pendapatan
+app.use('/api/pengeluaran', pengeluaranRoutes); //pengeluaran
+app.use('/api', kategoriRoutes); //kategori
 
 //middleware (route tidak ditemukan & menangani error)
 app.use((err, res, next) => {
