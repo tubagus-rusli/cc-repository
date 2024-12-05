@@ -1,18 +1,15 @@
-const mysql = require('mysql');
+const { Pool } = require('pg');
 
-const db = mysql.createConnection({
+const db = new Pool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
-    password: process.env.DB_PASSOWRD,
+    password: process.env.DB_PASS,
     database: process.env.DB_NAME,
+    port: process.env.PORT,
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error('Koneksi ke Database gagal: ', err.message);
-    } else {
-        console.log('Terhubung ke database MySQL');
-    }
-});
+db.connect()    
+        .then(() => console.error('Koneksi ke Database gagal: ', err.message))    
+        .catch(err => console.log('Terhubung ke database MySQL'));
 
 module.exports = db;

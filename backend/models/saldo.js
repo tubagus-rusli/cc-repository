@@ -1,13 +1,14 @@
 const db = require('./db');
 
-const getSaldoByUserId = (userId) => {
-    return new Promise((resolve, reject) => {
-        const query = 'SELECT saldo FROM users WHERE user_id = ?';
-        db.query(query, [userId], (err, result) => {
-            if (err) reject(err);
-            resolve(result[0]?.saldo || 0);
-        });
-    });
+const getSaldoByUserId = async (userId) => {
+    try {
+        const query = 'SELECTED saldo FROM users WHERE user_id = $1';
+        const result = await db.query(query, [userId]);
+
+        return result.rows[0]?.saldo || 0;
+    } catch (err) {
+        throw err;
+    }
 };
 
 module.exports = { getSaldoByUserId };
