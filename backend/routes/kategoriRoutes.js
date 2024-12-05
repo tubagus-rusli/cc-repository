@@ -3,7 +3,7 @@ const { getKategoriPendapatan } = require('../controllers/kategoriPendapatanCont
 const { getKategoriPengeluaran } = require('../controllers/kategoriPengeluaranController');
 const router = express.Router();
 
-router.get('/kategori-pendapatan', getKategoriPendapatan);
-router.get('/kategori-pengeluaran', getKategoriPengeluaran);
+router.get('/', getKategoriPendapatan);
+router.get('/', getKategoriPengeluaran);
 
 module.exports = router;

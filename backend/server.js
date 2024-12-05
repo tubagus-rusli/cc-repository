@@ -6,6 +6,8 @@ const targetRoutes = require('./routes/targetRoutes'); //Target
 const pendapatanRoutes = require('./routes/pendapatanRoutes'); //Pengeluaran
 const pengeluaranRoutes = require('./routes/pengeluaranRoutes'); //Pendapatan
 const kategoriRoutes = require('./routes/kategoriRoutes'); //kategori
+const rekomendasiRoutes = require('./routes/rekomendasiRoutes'); //Rekomendasi
+const homeRoutes = require('./routes/homeRoutes'); //dashboard(home)
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -25,6 +27,8 @@ app.use('/api/target', targetRoutes); //saldo
 app.use('/api/pendapatan', pendapatanRoutes); //pendapatan
 app.use('/api/pengeluaran', pengeluaranRoutes); //pengeluaran
 app.use('/api', kategoriRoutes); //kategori
+app.use('/api/rekomendasi', rekomendasiRoutes);
+app.use('/api/home', homeRoutes);
 
 //middleware (route tidak ditemukan & menangani error)
 app.use((err, res, next) => {
