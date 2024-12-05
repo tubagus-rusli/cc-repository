@@ -15,7 +15,7 @@ db.connect((err) => {
     if (err) {
         console.error('Koneksi ke Database gagal: ', err.message);
     } else {
-        console.log('Terhubung ke database MySQL');
+        console.log('Terhubung ke database');
     }
 });
 
