@@ -10,7 +10,7 @@ const rekomendasiRoutes = require('./routes/rekomendasiRoutes'); //Rekomendasi
 const homeRoutes = require('./routes/homeRoutes'); //dashboard(home)
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 const admin = require("firebase-admin");
 const serviceAccount = require("./firebase-config.json");
@@ -42,6 +42,6 @@ app.use((err, req, res, next) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
+    console.log(`Server berjalan di ${PORT}`);
 });
 
