@@ -7,13 +7,13 @@ exports.getHomeData = async (req, res) => {
     try {
         // Query saldo
         const [saldo] = await db.query(
-            "SELECT nominal, tanggal FROM saldo WHERE user_id = $1 ORDER BY tanggal DESC LIMIT 1",
+            "SELECT nominal, tanggal FROM saldo WHERE id = $1 ORDER BY tanggal DESC LIMIT 1",
             [userId]
         );
 
         // Query target
         const [target] = await db.query(
-            "SELECT nominal, tanggal FROM target WHERE user_id = $1 ORDER BY tanggal DESC LIMIT 1",
+            "SELECT nominal, tanggal FROM target WHERE id = $1 ORDER BY tanggal DESC LIMIT 1",
             [userId]
         );
 
@@ -22,7 +22,7 @@ exports.getHomeData = async (req, res) => {
             `SELECT p.nominal, k.nama AS kategori, p.tanggal
              FROM pendapatan p
              JOIN kategori_pendapatan k ON p.kategori_id = k.id
-             WHERE p.user_id = $1
+             WHERE p.id = $1
              ORDER BY p.tanggal DESC LIMIT 5`,
             [userId]
         );
@@ -32,14 +32,14 @@ exports.getHomeData = async (req, res) => {
             `SELECT p.nominal, k.nama AS kategori, p.tanggal
              FROM pengeluaran p
              JOIN kategori_pengeluaran k ON p.kategori_id = k.id
-             WHERE p.user_id = $1
+             WHERE p.id = $1
              ORDER BY p.tanggal DESC LIMIT 5`,
             [userId]
         );
 
         // Query rekomendasi
         const [rekomendasi] = await db.query(
-            "SELECT nominal FROM rekomendasi WHERE user_id = $1 ORDER BY id DESC LIMIT 1",
+            "SELECT nominal FROM rekomendasi WHERE id = $1 ORDER BY id DESC LIMIT 1",
             [userId]
         );
 

@@ -5,7 +5,7 @@ const getRekomendasi = async (req, res) => {
 
     try {
         const result = await db.query(
-            'SELECT * FROM rekomendasi WHERE user_id = $1 ORDER BY id DESC LIMIT 1',
+            'SELECT * FROM rekomendasi WHERE id = $1 ORDER BY id DESC LIMIT 1',
             [userId]
         );
 
@@ -29,7 +29,7 @@ const addRekomendasi = async (req, res) => {
     
     try {
         await db.query(
-            'INSERT INTO rekomendasi (nominal, user_id) VALUES ($1, $2)',
+            'INSERT INTO rekomendasi (nominal, id) VALUES ($1, $2)',
             [nominal, userId]
         );
 
